@@ -20,23 +20,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
 			getContacts: async () => {
-				const uri = '${host}/agendas/${user}/contacts'
+				const uri = `${host}/agendas/${user}/contacts`
 				const options = { method: "GET" }
 				const response = await fetch(uri, options)
-				console.log(response)
 				if (!response.ok) {
 					console.log("Error", response.status, response.statusText)
 					return
 				}
-				console.log("###############")
-				console.log(data)
 				const data = await response.json()
 				setStore({ contacts: data.contacts })
 			},
+			/* 
+			Hacer el action postContact 
+			Hacer el action putContact
+			Hacer el action deleteContact
+			*/
+			exampleFunction: () => {getActions().changeColor(0, "green");},
 			getMessage: async () => {
 				try {
 					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
