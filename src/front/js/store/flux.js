@@ -1,7 +1,11 @@
 const getState = ({ getStore, getActions, setStore }) => {
+	const host = "https://playground.4geeks.com/contact";
+	const user = "Rubenet8";
+
 	return {
 		store: {
 			message: null,
+			contacts: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -16,35 +20,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			getContacts: async () => {
+				const uri = `${host}/agendas/${user}/contacts`
+				const options = { method: "GET" }
+				const response = await fetch(uri, options)
+				if (!response.ok) {
+					console.log("Error", response.status, response.statusText)
+					return
+				}
+				const data = await response.json()
+				setStore({ contacts: data.contacts })
 			},
-
+			/* 
+			Hacer el action postContact 
+			Hacer el action putContact
+			Hacer el action deleteContact
+			*/
+			exampleFunction: () => {getActions().changeColor(0, "green");},
 			getMessage: async () => {
-				try{
-					// fetching data from the backend
+				try {
 					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
 					const data = await resp.json()
 					setStore({ message: data.message })
-					// don't forget to return something, that is how the async resolves
 					return data;
-				}catch(error){
+				} catch (error) {
 					console.log("Error loading message from backend", error)
 				}
 			},
 			changeColor: (index, color) => {
-				//get the store
 				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
 				const demo = store.demo.map((elm, i) => {
 					if (i === index) elm.background = color;
 					return elm;
 				});
 
-				//reset the global store
 				setStore({ demo: demo });
 			}
 		}
