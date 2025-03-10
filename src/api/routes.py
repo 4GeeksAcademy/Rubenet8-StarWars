@@ -7,7 +7,7 @@ from flask_cors import CORS
 from api.models import db, Users, Products
 
 
-api = Blueprint('api', _name_)
+api = Blueprint('api', __name__)
 CORS(api)
 
 

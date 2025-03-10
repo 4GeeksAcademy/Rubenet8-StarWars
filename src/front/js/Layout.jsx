@@ -14,7 +14,7 @@ import { AddContact } from "./pages/AddContact.jsx";
 import { EditContact } from "./pages/EditContact.jsx";
 import { StarwarsItems } from "./pages/Starwarsitems.jsx";
 import { PlanetDetails } from "./pages/PlanetDetails.jsx";
-
+import { Login } from "./pages/Login.jsx";
 
 
 //create your first component
@@ -39,7 +39,9 @@ const Layout = () => {
                         <Route element={<StarwarsItems />} path="/starships" />
                         <Route element={<PlanetDetails />} path="/planet-details" />
                         <Route element={<StarwarsItems />} path="/planets" />
+                        <Route element={<Login />} path="/login" />
                         <Route element={<h1>Not found!</h1>} path="*todos" />
+
                         
                     </Routes>
                     <Footer />
