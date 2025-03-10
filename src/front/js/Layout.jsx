@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import injectContext from "./store/appContext.js";
 //Custon component
-import ScrollToTop from "./component/scrollToTop";
+import ScrollToTop from "./component/ScrollToTop.jsx";
 import { BackendURL } from "./component/BackendURL.jsx";
 import { Navbar } from "./component/Navbar.jsx";
 import { Footer } from "./component/Footer.jsx";
@@ -12,7 +12,7 @@ import { Demo } from "./pages/demo";
 import { Contacts } from "./pages/Contacts.jsx"
 import { AddContact } from "./pages/AddContact.jsx";
 import { EditContact } from "./pages/EditContact.jsx";
-import { StarwarsItems } from "./pages/StarwarsItems.jsx";
+import { StarwarsItems } from "./pages/Starwarsitems.jsx";
 import { PlanetDetails } from "./pages/PlanetDetails.jsx";
 
 

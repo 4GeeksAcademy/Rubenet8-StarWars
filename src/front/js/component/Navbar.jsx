@@ -22,7 +22,7 @@ export const Navbar = () => {
 						<button className="btn btn-primary">Contacts</button>
 					</Link>
 					<span className="btn btn-primary" onClick={() => handleSelected("people")}> Characters</span>
-					<span className="btn btn-primary" onClick={() => handleSelected("planets")}> Planes</span>
+					<span className="btn btn-primary" onClick={() => handleSelected("planets")}> Planets</span>
 					<span className="btn btn-primary" onClick={() => handleSelected("starships")}> Starships</span>
 				</div>
 			</div>
