@@ -89,6 +89,7 @@ class Post(db.Model):
     date = db.Column(db.DateTime)
     image_url = db.Column(db.String())
     user_id = db.Column(db.Integer)
+    user_to = db.relationship('Users', foreign_keys=[user_id], backref=db.backref('user_to'), lazy='select')
 
 
 class Medias(db.Model):
@@ -97,6 +98,7 @@ class Medias(db.Model):
     type = db.Column(db.Enum("ok", name= "mediaType"))
     url = db.Column(db.String())
     post_id = db.Column(db.Integer)
+    post_to = db.relationship('Posts', foreign_keys=[post_id], backref=db.backref('medias'), lazy='select')
 
 
 class Comments(db.Model):
@@ -104,7 +106,9 @@ class Comments(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String())
     user_id = db.Column(db.Integer)
+    user_to = db.relationship('Users', foreign_keys=[user_id], backref=db.backref('comments'), lazy='select')
     post_id = db.Column(db.Integer)
+    post_to = db.relationship('Posts', foreign_keys=[post_id], backref=db.backref('comments'), lazy='select')
 
 class Characters(db.Model):
     __tablename__ = 'characters'
@@ -123,7 +127,9 @@ class CharacterFavorite(db.Model):
     __tablename__ = 'character_favorite'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
+    user_to = db.relationship('Users', foreign_keys=[user_id], backref=db.backref('character_favorite'), lazy='select')
     character_id = db.Column(db.Integer)
+    character_to = db.relationship('Characters', foreign_keys=[character_id], backref=db.backref('character_favorite'), lazy='select')
 
 
 class Planets(db.Model):
@@ -142,4 +148,6 @@ class PlanetFavorite(db.Model):
     __tablename__ = 'planet_favorite'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer)
+    user_to = db.relationship('Users', foreign_keys=[user_id], backref=db.backref('planet_favorite'), lazy='select')
     planet_id = db.Column(db.Integer)
+    planet_to = db.relationship('Planets', foreign_keys=[planet_id], backref=db.backref('planet_favorite'), lazy='select')

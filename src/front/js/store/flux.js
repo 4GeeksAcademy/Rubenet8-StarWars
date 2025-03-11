@@ -17,10 +17,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planets: [],
 			starwarsURL: "https://www.swapi.tech/api",
 			activePage: "planets",
-			currentItemDetails: {}
+			currentItemDetails: {},
+			isLoading: false,
+			favorites: []
 		},
 		actions: {
-			getItemsDetails: async (uri) => {
+			setFavorite: (favorite) => {
+				console.log("favorite", favorite);
+				console.log("favorite includes", getStore().favorites.includes(favorite));
+				if (getStore().favorites.includes(favorite)) {
+					setStore({favorites: getStore().favorites.filter((item)=> item != favorite )})
+				}else{
+					setStore({favorites: [...getStore().favorites, favorite]})
+				}
+				console.log("Soy favoritos", getStore().favorites);
+			},
+			getItemsDetails: async (uri, id) => {
+				setStore({isLoading: true})
 				const options = { method: 'GET'}
 				const response = await fetch( uri, options)
 				if (!response.ok) {
@@ -30,6 +43,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = await response.json()
 				setStore({currentItemDetails: data.result.properties})
 				console.log("soy details", data.result.properties)
+				setStore({isLoading: false})
 			},
 			setActivePage: (page) => { 
 				setStore({activePage: page})

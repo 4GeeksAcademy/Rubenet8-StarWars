@@ -17,6 +17,7 @@ export const AddContact = () => {
     }
 
     return (
+        <div className="container w-50 mt-4 bg-dark text-white">
         <form onSubmit={handleNewContact}>
             <div className="mb-3">
                 <label forhtml="nameInput" className="form-label">Name</label>
@@ -35,5 +36,6 @@ export const AddContact = () => {
                 <input value={address} onChange={(event) => setAddress(event.target.value)} type="text" className="form-control" id="addressInput" />
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
-        </form>)
+        </form>
+        </div>)
 }

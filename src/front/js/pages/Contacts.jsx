@@ -26,14 +26,14 @@ export const Contacts = () => {
             <ul className="list-group mt-3">
                 {store.listContacts && store.listContacts.length > 0 && store.listContacts.map((contact, index) => {
                     return (
-                        <li key={contact.id} className="list-group-item d-flex justify-content-center">
+                        <li key={contact.id} className="list-group-item d-flex justify-content-center bg-dark text-white">
                             <div className="d-flex align-items-center w-75">
                                 <div className="col-md-3 d-flex justify-content-center">
                                     <img
                                         className="rounded-circle"
-                                        src="https://picsum.photos/170/170/"
+                                        src="https://i.pinimg.com/736x/40/2c/37/402c37ce1edf0c4167d86e05169fe98e.jpg"
                                         alt="Contact"
-
+                                        style={{width:"200px", height:"200px"}}
                                     />
                                 </div>
                                 <div className="col-md-6">
@@ -49,9 +49,6 @@ export const Contacts = () => {
                                     <button type="button"  onClick={() => eliminarContacto(contact.id)}>
                                         <i className="fa fa-trash fa-lg"></i>
                                     </button>
-                                   
-                                   
-                                    
                                 </div>
                             </div>
                         </li>

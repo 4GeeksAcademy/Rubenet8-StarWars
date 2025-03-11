@@ -1,37 +1,51 @@
-import React, { useContext } from "react";
-import { Context } from "../store/appContext";
+import React, {useContext} from "react";
+import {Context} from "../store/appContext";
 
-export const PlanetDetails = () => {
+export const PlanetDetails = ()=> {
+    const{actions, store} = useContext(Context)
 
-    const { actions, store } = useContext(Context)
-
-    return( 
+    return(
         <div>
+            <h1>
+                {store.currentItemDetails.name}
+            </h1>
             <ul>
-            {store.currentItemDetails.name} 
                 <li>
-                   <p>Height: {store.currentItemDetails.height} </p> 
-                    
+                    <p>
+                        Height: {store.currentItemDetails.height}
+                    </p>
                 </li>
                 <li>
-                    {store.currentItemDetails.mass} 
-
+                    <p>
+                        Mass: {store.currentItemDetails.mass}
+                    </p>
                 </li>
                 <li>
-                    {store.currentItemDetails.hair_color}
+                    <p>
+                        Hair color: {store.currentItemDetails.hair_color}
+                    </p>
                 </li>
                 <li>
-                    {store.currentItemDetails.skin_color} 
+                    <p>
+                        Skin color: {store.currentItemDetails.skin_color}
+                    </p>
                 </li>
                 <li>
-                    {store.currentItemDetails.eye_color} 
+                    <p>
+                        Eye color: {store.currentItemDetails.eye_color}
+                    </p>
                 </li>
                 <li>
-                    {store.currentItemDetails.birth_year} 
+                    <p>
+                        Birth year: {store.currentItemDetails.birth_year}
+                    </p>
                 </li>
                 <li>
-                    {store.currentItemDetails.gender}
+                    <p>
+                        Gender: {store.currentItemDetails.gender}
+                    </p>
                 </li>
             </ul>
-        </div> )
-}
+        </div>
+    )
+} 
