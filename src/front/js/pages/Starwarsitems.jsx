@@ -8,7 +8,7 @@ export const StarwarsItems = () => {
     const { store, actions } = useContext(Context)
     const navigate = useNavigate()
     const handleDetails = (itemUid, itemUrl) => {
-        actions.getItemsDetails(itemUrl)
+        actions.getItemsDetails(itemUrl, itemUid)
         navigate("/item-details")
     }
     const handleFavorite = (itemName) => {

@@ -4,8 +4,10 @@ import { Context } from "../store/appContext";
 export const ItemDetails = () => {
 
     const { actions, store } = useContext(Context)
+    console.log("ACA!!!!!!!!", store.currentItemDetails);
 
-    return( 
+
+    return (
         <div className="Container mt-4">
             {store.isLoading ? (
                 <div className="d-flex justify-content-center">
@@ -20,10 +22,10 @@ export const ItemDetails = () => {
                                 alt={store.currentItemDetails.name}
                                 onError={(e) => { e.target.src = "https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/big-placeholder.jpg"; }}
                                 src={`https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/${store.activePage === 'people' ? 'characters' : store.activePage}/${store.currentItemDetails.uid}.jpg`}
-                                style={{ width: "40%", objectFit: "cover"}}
+                                style={{ width: "40%", objectFit: "cover" }}
                             />
                             <div className="card-body">
-                            <ul className="list-group">
+                                <ul className="list-group">
                                     {Object.entries(store.currentItemDetails).map(([key, value]) => (
                                         key !== 'created' && key !== 'edited' && key !== 'name' && key !== 'url' && key !== 'uid' ? (
                                             <li className="list-group-item bg-dark text-white" key={key}>
@@ -37,5 +39,5 @@ export const ItemDetails = () => {
                     </div>
                 </div>
             )}
-        </div> )
+        </div>)
 }

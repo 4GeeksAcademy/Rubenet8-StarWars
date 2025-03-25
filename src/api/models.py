@@ -88,7 +88,7 @@ class Post(db.Model):
     body = db.Column(db.String())
     date = db.Column(db.DateTime)
     image_url = db.Column(db.String())
-    user_id = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.foreing_keys('users.id'))
     user_to = db.relationship('Users', foreign_keys=[user_id], backref=db.backref('user_to'), lazy='select')
 
 

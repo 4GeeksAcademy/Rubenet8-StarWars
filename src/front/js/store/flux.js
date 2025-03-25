@@ -41,7 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return
 				}
 				const data = await response.json()
-				setStore({currentItemDetails: data.result.properties})
+				setStore({currentItemDetails: {...data.result.properties, uid: id}})
 				console.log("soy details", data.result.properties)
 				setStore({isLoading: false})
 			},
