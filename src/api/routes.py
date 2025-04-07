@@ -217,7 +217,7 @@ def get_user_favorite_characters(user_id):
         return response_body, 404
 
     favorites = db.session.execute(
-        db.select(CharactersFavorites).where(CharactersFavorites.user_id == user_id)
+        db.select(CharacterFavorite).where(CharacterFavorite.user_id == user_id)
     ).scalars()
     results = [favorite.serialize() for favorite in favorites]
 
@@ -247,7 +247,7 @@ def add_favorite_character(user_id):
         response_body['message'] = f'El personaje con id {character_id} no existe'
         return response_body, 404
 
-    favorite = CharactersFavorites(user_id=user_id, character_id=character_id)
+    favorite = CharacterFavorite(user_id=user_id, character_id=character_id)
     db.session.add(favorite)
     db.session.commit()
 
@@ -261,9 +261,9 @@ def add_favorite_character(user_id):
 def delete_favorite_character(user_id, character_id):
     response_body = {}
 
-    favorite = db.session.execute(db.select(CharactersFavorites).where(
-        CharactersFavorites.user_id == user_id,
-        CharactersFavorites.character_id == character_id
+    favorite = db.session.execute(db.select(CharacterFavorite).where(
+        CharacterFavorite.user_id == user_id,
+        CharacterFavorite.character_id == character_id
     )).scalar()
 
     if not favorite:
