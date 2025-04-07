@@ -18,7 +18,6 @@ export const Login = () => {
     const handelSubmit = (event) => {
         event.preventDefault();
         const dataToSend = { email, password, checkMe }
-        console.log(dataToSend)
 
         // // asignar el valor de user (para darle la bienvenida)
         // actions.setUser(email);

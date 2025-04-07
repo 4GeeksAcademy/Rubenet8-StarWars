@@ -23,14 +23,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			setFavorite: (favorite) => {
-				console.log("favorite", favorite);
-				console.log("favorite includes", getStore().favorites.includes(favorite));
 				if (getStore().favorites.includes(favorite)) {
 					setStore({favorites: getStore().favorites.filter((item)=> item != favorite )})
 				}else{
 					setStore({favorites: [...getStore().favorites, favorite]})
 				}
-				console.log("Soy favoritos", getStore().favorites);
 			},
 			getItemsDetails: async (uri, id) => {
 				setStore({isLoading: true})
@@ -42,7 +39,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				const data = await response.json()
 				setStore({currentItemDetails: {...data.result.properties, uid: id}})
-				console.log("soy details", data.result.properties)
 				setStore({isLoading: false})
 			},
 			setActivePage: (page) => { 
@@ -64,7 +60,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({currentContact: contact})
 			},
 			createContact: async (newContact) => { 
-				console.log(newContact)
 				const uri = `${host}/agendas/${user}/contacts`;
 				const options = { method: "POST", body: JSON.stringify(newContact), headers: {'Content-Type': 'application/json'} };
 				const response = await fetch( uri, options );
@@ -85,11 +80,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return
 				}
 				const data = await response.json()
-				console.log(data)
 				setStore({ listContacts: data.contacts })
 			},
 			deleteContact: async (id) => {
-				console.log(id, "este es el id que recibe el actions.deleteContact");
 				const uri = `${host}/agendas/${user}/contacts/${id}`
 				const options = { method: "DELETE" }
 				const response = await fetch(uri, options)

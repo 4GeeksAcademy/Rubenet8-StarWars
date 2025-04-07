@@ -6,7 +6,6 @@ export const Contacts = () => {
 
     const navigate = useNavigate();
     const { store, actions } = useContext(Context)
-    console.log(store.listContacts)
     const editContact = (contact) => {
         actions.setCurrentContact(contact);
         navigate("/edit")

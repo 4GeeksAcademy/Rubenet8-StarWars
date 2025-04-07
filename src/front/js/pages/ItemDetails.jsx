@@ -4,7 +4,6 @@ import { Context } from "../store/appContext";
 export const ItemDetails = () => {
 
     const { actions, store } = useContext(Context)
-    console.log("ACA!!!!!!!!", store.currentItemDetails);
 
 
     return (
