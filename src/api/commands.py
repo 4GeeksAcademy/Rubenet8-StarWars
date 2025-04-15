@@ -7,7 +7,7 @@ import click
 from api.models import db, Users
 
 
-def setup_commands(app): 
+def setup_commands(app):
     """ 
     This is an example command "insert-test-users" that you can run from the command line
     by typing: $ flask insert-test-users 5
@@ -24,10 +24,9 @@ def setup_commands(app):
             user.is_active = True
             db.session.add(user)
             db.session.commit()
-            print("Users: ", user.email, " created.")
+            print("User: ", user.email, " created.")
         print("All test users created")
 
     @app.cli.command("insert-test-data")
     def insert_test_data():
         pass
-    

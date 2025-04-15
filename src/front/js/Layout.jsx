@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import injectContext from "./store/appContext.js";
 //Custon component
-import ScrollToTop from "./component/ScrollToTop.jsx";
+import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/BackendURL.jsx";
 import { Navbar } from "./component/Navbar.jsx";
 import { Footer } from "./component/Footer.jsx";
@@ -12,10 +12,11 @@ import { Demo } from "./pages/demo";
 import { Contacts } from "./pages/Contacts.jsx"
 import { AddContact } from "./pages/AddContact.jsx";
 import { EditContact } from "./pages/EditContact.jsx";
-import { StarwarsItems } from "./pages/Starwarsitems.jsx";
+import { StarwarsItems } from "./pages/StarwarsItems.jsx";
 import { PlanetDetails } from "./pages/PlanetDetails.jsx";
 import { ItemDetails } from "./pages/ItemDetails.jsx";
 import { Login } from "./pages/Login.jsx";
+
 
 
 //create your first component
@@ -38,12 +39,11 @@ const Layout = () => {
                         <Route element={<EditContact />} path="/edit" />
                         <Route element={<StarwarsItems />} path="/people" />
                         <Route element={<StarwarsItems />} path="/starships" />
+                        <Route element={<PlanetDetails />} path="/planet-details" />
                         <Route element={<ItemDetails />} path="/item-details" />
                         <Route element={<StarwarsItems />} path="/planets" />
-                        <Route element={<PlanetDetails />} path="/planet-details" />
-                        <Route element={<Login />} path="/login" />
+                        <Route element={<Login />} path="/login"/>
                         <Route element={<h1>Not found!</h1>} path="*todos" />
-
                         
                     </Routes>
                     <Footer />
